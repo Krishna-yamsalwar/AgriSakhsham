@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>AgriSakhsham</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #0f5132, #1aba6f, #28a745);
+            /* Full green gradient */
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        .glossy-text {
+            background: linear-gradient(to right, #a8ff78, #78ffd6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-bg {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+        }
+
+        @keyframes droneFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+
+        }
+    </style>
+</head>
+
+</style>
+<style>
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .drone-animation {
+        animation: droneFloat 8s ease-in-out infinite;
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .hover-scale:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+    }
+
+    .transition-all {
+        transition: all 0.3s ease-in-out;
+    }
+</style>
+<style>
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<script>
+    window.addEventListener('load', () => {
+        const loader = document.getElementById('loader');
+        if (loader) loader.style.display = 'none';
+    });
+</script>
+
+<style>
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in.visible {
+        opacity: 1;
+        transform: none;
+    }
+</style>
+</head>
+
+<body class="text-white">
+    <nav class="fixed w-full z-20 bg-green-900/90 backdrop-blur shadow-md py-3">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-leaf text-lime-400 text-2xl"></i>
+                <h1 class="text-xl font-bold text-white">Agri<span class="text-lime-400">Sakhsham</span></h1>
+            </div>
+            <div class="space-x-4 hidden md:block text-lime-100">
+                <a href="home" class="hover:text-lime-400">Home</a>
+                <a href="ai_assistant" class="hover:text-lime-400">Voice Assistant</a>
+                <a href="crop_recommendation" class="hover:text-lime-400">Crop Prediction</a>
+                <a href="DiseasePrediction" class="hover:text-lime-400">Disease Detection</a>
+                <a href="fertilizer_recommendation2" class="hover:text-lime-400">Fertilizer Advisor</a>
+                <a href="subsidy" class="hover:text-lime-400">Subsidy Finder</a>
+                 <a href="forecast" class="hover:text-lime-400">Smart Weather</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-28 px-4">
+        <!-- Hero Section -->
+        <section
+            class="flex flex-col lg:flex-row items-center justify-between min-h-screen px-6 py-20 bg-gradient-to-r from-green-700 via-green-800 to-emerald-900 text-white glossy-bg">
+            <!-- Welcome Text -->
+            <div class="max-w-3xl text-center lg:text-left lg:w-1/2">
+                <h1 class="text-5xl md:text-6xl font-extrabold mb-6 glossy-text">
+                    Welcome to <br class="block md:hidden" /> AgriSakhsham
+                </h1>
+                <p class="text-xl text-gray-200 mb-8">
+                    Empowering smart farmers with AI, IoT & sustainability.
+                </p>
+                <div
+                    class="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button
+                        class="bg-white text-green-700 font-semibold px-6 py-3 rounded-md hover:bg-gray-100 transition">
+                        <i class="fas fa-play-circle mr-2"></i> Watch Demo
+                    </button>
+                    <button
+                        class="bg-transparent border border-green-600 text-green-300 px-6 py-3 rounded-md hover:bg-green-100 hover:text-green-800 transition">
+                        <i class="fas fa-leaf mr-2"></i> Get Started
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <!-- Circular Stats -->
+            <div class="lg:w-1/2 grid grid-cols-2 gap-6 justify-center mt-12 lg:mt-0">
+                <div
+                    class="w-40 h-40 bg-white/90 backdrop-blur-md rounded-full shadow-2xl flex flex-col items-center justify-center text-center p-4 hover:scale-105 transition">
+                    <i class="fas fa-robot text-green-500 text-4xl mb-2"></i>
+                    <h3 class="text-2xl font-extrabold text-gray-800">150+</h3>
+                    <p class="text-sm text-gray-600">AI Farms</p>
+                </div>
+                <div
+                    class="w-40 h-40 bg-white/90 backdrop-blur-md rounded-full shadow-2xl flex flex-col items-center justify-center text-center p-4 hover:scale-105 transition">
+                    <i class="fas fa-chart-line text-blue-500 text-4xl mb-2"></i>
+                    <h3 class="text-2xl font-extrabold text-gray-800">30%</h3>
+                    <p class="text-sm text-gray-600">More Yields</p>
+                </div>
+                <div
+                    class="w-40 h-40 bg-white/90 backdrop-blur-md rounded-full shadow-2xl flex flex-col items-center justify-center text-center p-4 hover:scale-105 transition">
+                    <i class="fas fa-water text-yellow-500 text-4xl mb-2"></i>
+                    <h3 class="text-2xl font-extrabold text-gray-800">50%</h3>
+                    <p class="text-sm text-gray-600">Water Saved</p>
+                </div>
+                <div
+                    class="w-40 h-40 bg-white/90 backdrop-blur-md rounded-full shadow-2xl flex flex-col items-center justify-center text-center p-4 hover:scale-105 transition">
+                    <i class="fas fa-sun text-purple-500 text-4xl mb-2"></i>
+                    <h3 class="text-2xl font-extrabold text-gray-800">24/7</h3>
+                    <p class="text-sm text-gray-600">Monitoring</p>
+                </div>
+            </div>
+        </section>
+
+        <style>
+            .glossy-text {
+                background: linear-gradient(90deg, #ffffff, #d4ffcf, #ffffff);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-fill-color: transparent;
+            }
+        </style>
+        <!-- Features Section -->
+        <section
+            class="relative bg-gradient-to-br from-green-100 via-green-200 to-green-300 py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+            <!-- Decorative SVG Background -->
+            <svg class="absolute opacity-10 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            </svg>
+
+            <div class="relative z-10 max-w-7xl mx-auto text-center mb-16">
+                <h2 class="text-4xl font-bold text-green-800 mb-4">Smart Farming <span
+                        class="text-green-900">Tools</span></h2>
+                <p class="text-lg text-green-700 max-w-3xl mx-auto">Explore AI, crop prediction, weather planning, and
+                    subsidy help in one place.</p>
+            </div>
+
+            <!-- Feature Circles Grid -->
+            <div class="relative z-10 flex flex-wrap justify-center gap-10">
+
+                <!-- Circle Card -->
+                <div
+                    class="bg-white rounded-full w-64 h-64 flex flex-col items-center justify-center text-center px-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-green-300/70 glow-animation">
+                    <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mb-3">
+                        <i class="fas fa-robot text-3xl text-green-600"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-800 mb-1">Voice Assistant</h3>
+                    <p class="text-sm text-gray-500">Get local farming help via voice commands.</p>
+                    <a href="ai_assistant" class="text-green-600 font-semibold mt-2">Try Now →</a>
+                </div>
+
+                <!-- Repeat for others with icon/colors -->
+                <div
+                    class="bg-white rounded-full w-64 h-64 flex flex-col items-center justify-center text-center px-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-red-300/70 glow-animation">
+                    <div class="bg-red-100 w-20 h-20 rounded-full flex items-center justify-center mb-3">
+                        <i class="fas fa-bug text-3xl text-red-600"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-800 mb-1">Disease Detection</h3>
+                    <p class="text-sm text-gray-500">Upload crop images and detect disease early.</p>
+                    <a href="DiseasePrediction" class="text-green-600 font-semibold mt-2">Detect Now →</a>
+                </div>
+
+                <div
+                    class="bg-white rounded-full w-64 h-64 flex flex-col items-center justify-center text-center px-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-blue-300/70 glow-animation">
+                    <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mb-3">
+                        <i class="fas fa-seedling text-3xl text-blue-600"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-800 mb-1">Crop Prediction</h3>
+                    <p class="text-sm text-gray-500">Choose the best crop based on soil & climate.</p>
+                    <a href="crop_recommendation" class="text-green-600 font-semibold mt-2">Predict Now →</a>
+                </div>
+
+                <div
+                    class="bg-white rounded-full w-64 h-64 flex flex-col items-center justify-center text-center px-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-purple-300/70 glow-animation">
+                    <div class="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center mb-3">
+                        <i class="fas fa-prescription-bottle-alt text-3xl text-purple-600"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-800 mb-1">Fertilizer Advisor</h3>
+                    <p class="text-sm text-gray-500">Get fertilizer guidance using plant images.</p>
+                    <a href="Fertilizer_recommendation2" class="text-green-600 font-semibold mt-2">Get Advice →</a>
+                </div>
+
+                <div
+                    class="bg-white rounded-full w-64 h-64 flex flex-col items-center justify-center text-center px-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-yellow-300/70 glow-animation">
+                    <div class="bg-yellow-100 w-20 h-20 rounded-full flex items-center justify-center mb-3">
+                        <i class="fas fa-hand-holding-usd text-3xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-800 mb-1">Subsidy Finder</h3>
+                    <p class="text-sm text-gray-500">Check your eligibility for farming subsidies.</p>
+                    <a href="subsidy" class="text-green-600 font-semibold mt-2">Check Now →</a>
+                </div>
+
+                <div
+                    class="bg-white rounded-full w-64 h-64 flex flex-col items-center justify-center text-center px-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-indigo-300/70 glow-animation">
+                    <div class="bg-indigo-100 w-20 h-20 rounded-full flex items-center justify-center mb-3">
+                        <i class="fas fa-cloud-sun-rain text-3xl text-indigo-600"></i>
+                    </div>
+                    <p class="text-sm text-gray-500">Get Weather Information using </p>
+                    <a href="forecast" class="text-green-600 font-semibold mt-2">Smart Weather →</a>
+                </div>
+
+
+        </section>
+        <style>
+            .glow-animation {
+                animation: float 4s ease-in-out infinite;
+            }
+
+            @keyframes float {
+
+                0%,
+                100% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(-8px);
+                }
+            }
+        </style>
+        <!-- Tech Showcase -->
+        <!-- Tech Showcase -->
+        <section
+            class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-green-800 via-green-600 to-lime-500 text-white">
+            <div class="max-w-7xl mx-auto">
+                <div class="md:flex items-center justify-between gap-10">
+                    <!-- Left Content -->
+                    <div class="md:w-1/2 mb-10 md:mb-0">
+                        <h2 class="text-4xl font-extrabold mb-6 leading-snug">
+                            Empower Your Farm with <span class="text-yellow-300">Smart Dashboard</span>
+                        </h2>
+                        <p class="text-lg text-white/90 mb-8">
+                            Centralized control of all your farming operations at your fingertips — anywhere, anytime.
+                        </p>
+                        <ul class="space-y-5">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-yellow-300 text-xl mr-3"></i>
+                                Real-time monitoring of all farm metrics
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-yellow-300 text-xl mr-3"></i>
+                                Automated alerts for anomalies
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-yellow-300 text-xl mr-3"></i>
+                                Historical data trends and insights
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-yellow-300 text-xl mr-3"></i>
+                                Manage everything from our mobile app
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Right Image -->
+                    <div class="md:w-1/2 relative">
+                        <img src="/static/image.png" alt="Smart Farming"
+                            class="rounded-xl shadow-2xl border-4 border-white drone-animation">
+                        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg">
+                            <div class="flex items-center">
+                                <div class="bg-green-100 p-3 rounded-full mr-3">
+                                    <i class="fas fa-seedling text-green-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Crop Health</p>
+                                    <p class="font-bold text-gray-800">98% Optimal</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-lg">
+                            <div class="flex items-center">
+                                <div class="bg-blue-100 p-3 rounded-full mr-3">
+                                    <i class="fas fa-tint text-blue-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Water Saved</p>
+                                    <p class="font-bold text-gray-800">40% Less</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Testimonials -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-lime-100 via-green-100 to-emerald-200">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">What <span class="text-green-600">Farmers
+                            Say</span></h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                        Real stories from farmers empowered by AgriSakhsham's smart solutions.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-white/80 p-8 rounded-2xl shadow-xl border-t-4 border-green-400">
+                        <div class="flex items-center mb-4 text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 mb-6 italic">
+                            "AgriSakhsham's voice assistant gave me quick advice in Hindi to control pests in my wheat
+                            field. It feels like having an expert right here on my farm!"
+                        </p>
+                        <div class="flex items-center">
+                            <img src="/static/image3.jpeg" alt="Sunita Devi"
+                                class="w-12 h-12 rounded-full mr-4 border border-green-600" />
+                            <div>
+                                <h4 class="font-bold text-gray-900">Sunita Devi</h4>
+                                <p class="text-sm text-gray-600">Patna, Bihar</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="bg-white/80 p-8 rounded-2xl shadow-xl border-t-4 border-green-400">
+                        <div class="flex items-center mb-4 text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 mb-6 italic">
+                            "AgriSakhsham's crop prediction showed me which crops would thrive in my soil and climate. I
+                            planted grapes instead of corn and saw my profits grow by 35%!"
+                        </p>
+                        <div class="flex items-center">
+                            <img src="/static/image1.webp" alt="Ramesh Patel"
+                                class="w-12 h-12 rounded-full mr-4 border border-green-600" />
+                            <div>
+                                <h4 class="font-bold text-gray-900">Ramesh Patel</h4>
+                                <p class="text-sm text-gray-600">Rajkot, Gujarat</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="bg-white/80 p-8 rounded-2xl shadow-xl border-t-4 border-green-400">
+                        <div class="flex items-center mb-4 text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="text-gray-700 mb-6 italic">
+                            "Thanks to AgriSakhsham's subsidy finder, I found ₹50,000 in government support I didn’t
+                            know I qualified for. It covered my costs for three years!"
+                        </p>
+                        <div class="flex items-center">
+                            <img src="/static/image2.jpg" alt="Eknath Patil"
+                                class="w-12 h-12 rounded-full mr-4 border border-green-600" />
+                            <div>
+                                <h4 class="font-bold text-gray-900">Eknath Patil</h4>
+                                <p class="text-sm text-gray-600">Nashik, Maharashtra</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CTA Section -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Transform <span class="text-green-400">Your
+                        Farm?</span></h2>
+                <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                    Join hundreds of farmers who are already benefiting from smart agriculture technology.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button
+                        class="bg-green-500 hover:bg-green-600 px-8 py-4 rounded-md font-bold text-lg transition duration-300 flex items-center justify-center mx-auto sm:mx-0">
+                        <i class="fas fa-calendar-check mr-3"></i> Schedule Demo
+                    </button>
+                    <button
+                        class="border-2 border-gray-600 hover:border-green-500 hover:text-green-400 px-8 py-4 rounded-md font-bold text-lg transition duration-300 flex items-center justify-center mx-auto sm:mx-0">
+                        <i class="fas fa-phone-alt mr-3"></i> Contact Sales
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div>
+                        <h3 class="text-lg font-bold mb-4 flex items-center">
+                            <i class="fas fa-leaf text-green-500 mr-2"></i> AgriSakhsham
+                        </h3>
+                        <p class="text-gray-400 mb-4">
+                            Revolutionizing agriculture through technology for a sustainable future.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a class="text-gray-400 hover:text-green-500" href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a class="text-gray-400 hover:text-green-500" href="#">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a class="text-gray-400 hover:text-green-500" href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a class="text-gray-400 hover:text-green-500" href="#">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Solutions</h3>
+                        <ul class="space-y-2">
+                            <li><a class="text-gray-400 hover:text-green-500" href="ai_assistant">Voice
+                                    Assistant</a></li>
+                            <li><a class="text-gray-400 hover:text-green-500" href="DiseasePrediction">Crop Disease
+                                    Prediction</a></li>
+                            <li><a class="text-gray-400 hover:text-green-500" href="crop_recommendation">Crop
+                                    Prediction</a></li>
+                            <li><a class="text-gray-400 hover:text-green-500"
+                                    href="fertilizer_recommendation2">Fertilizer Advisor</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Resources</h3>
+                        <ul class="space-y-2">
+                            <li><a class="text-gray-400 hover:text-green-500" href="#">Blog</a></li>
+                            <li><a class="text-gray-400 hover:text-green-500" href="#">Case Studies</a></li>
+                            <li><a class="text-gray-400 hover:text-green-500" href="#">Webinars</a></li>
+                            <li><a class="text-gray-400 hover:text-green-500" href="#">Farm Calculator</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Contact</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-map-marker-alt mr-2 text-green-500"></i> 123 Farm Tech Ave, CA
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-phone-alt mr-2 text-green-500"></i> (555) 123-4567
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-envelope mr-2 text-green-500"></i> info@agriSakhsham.com
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 mb-4 md:mb-0">
+                        © 2023 AgriSakhsham. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a class="text-gray-400 hover:text-green-500" href="#">Privacy Policy</a>
+                        <a class="text-gray-400 hover:text-green-500" href="#">Terms of Service</a>
+                        <a class="text-gray-400 hover:text-green-500" href="#">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script>
+            // Simple animation for drone icon on scroll
+            document.addEventListener('DOMContentLoaded', function () {
+                const droneIcon = document.querySelector('.fa-drone-alt');
+
+                window.addEventListener('scroll', function () {
+                    const scrollPosition = window.scrollY;
+                    if (droneIcon) {
+                        droneIcon.style.transform = `rotate(${scrollPosition / 10}deg)`;
+                    }
+                });
+
+                // Smooth scrolling for navigation links
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    });
+                });
+            });
+        </script>
+        <button id="backToTop"
+            style="display:none;position:fixed;bottom:30px;right:30px;z-index:999;background:green;color:white;border:none;padding:10px 15px;border-radius:8px;cursor:pointer;">↑
+            Top</button>
+        <script>
+            const backToTop = document.getElementById("backToTop");
+            window.onscroll = () => {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    backToTop.style.display = "block";
+                } else {
+                    backToTop.style.display = "none";
+                }
+            };
+            backToTop.onclick = () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const elements = document.querySelectorAll(".fade-in");
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                        }
+                    });
+                }, { threshold: 0.1 });
+                elements.forEach(el => observer.observe(el));
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const apiKey = '5b9d86de08756f51589e8efa510d0c99'; // Replace with your real OpenWeatherMap API key
+                const weatherResult = document.getElementById('weatherResult');
+
+                if ("geolocation" in navigator) {
+                    navigator.geolocation.getCurrentPosition(async (position) => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+
+                        try {
+                            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+                            const response = await fetch(url);
+                            const data = await response.json();
+
+                            const temp = data.main.temp;
+                            const condition = data.weather[0].description;
+                            const city = data.name;
+                            const humidity = data.main.humidity;
+
+                            weatherResult.innerHTML = `
+                        📍 ${city}<br>
+                        🌡 ${temp}°C<br>
+                        🌤 ${condition}<br>
+                        💧 Humidity: ${humidity}%
+                    `;
+                        } catch (error) {
+                            weatherResult.textContent = "Unable to fetch weather data.";
+                        }
+                    }, () => {
+                        weatherResult.textContent = "Location permission denied.";
+                    });
+                } else {
+                    weatherResult.textContent = "Geolocation is not supported in this browser.";
+                }
+            });
+        </script>
+
+</body>
+
+</html>

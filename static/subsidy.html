@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>easyFarm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #003d29, #005f3b);
+            background-attachment: fixed;
+            color: #e7fbe9;
+        }
+
+        .glow {
+            box-shadow: 0 0 10px #86efac, 0 0 20px #4ade80;
+        }
+
+        .voice-wave {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(132, 204, 22, 0.3);
+            animation: ripple 2s infinite;
+            transform: scale(0);
+            pointer-events: none;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .clickable-example {
+            cursor: pointer;
+        }
+
+        section {
+            background-color: #022c22;
+        }
+
+        h2,
+        h3,
+        h4 {
+            color: #bbf7d0;
+        }
+
+        .text-gray-800 {
+            color: #d1fae5;
+        }
+
+        .text-gray-600,
+        .text-gray-500 {
+            color: #a7f3d0;
+        }
+
+        .bg-gray-50,
+        .bg-white {
+            background-color: #064e3b;
+        }
+
+        .border-gray-300 {
+            border-color: #10b981;
+        }
+
+        .hover\:bg-green-500:hover {
+            background-color: #10b981 !important;
+        }
+
+        .hover\:text-white:hover {
+            color: #ffffff !important;
+        }
+
+        .hover\:bg-green-600:hover {
+            background-color: #059669 !important;
+        }
+    </style>
+</head>
+
+<body class="text-white">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #034f2b 0%, #06712d 100%);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-blend-mode: overlay;
+            color: white;
+        }
+
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(74, 222, 128, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
+            }
+        }
+
+        .glow-text {
+            text-shadow: 0 0 10px rgba(74, 222, 128, 0.7);
+        }
+
+        .subsidy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .scheme-type-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+        }
+
+        .central-sector {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .centrally-sponsored {
+            background-color: #8b5cf6;
+            color: white;
+        }
+
+        .krishonnati {
+            background-color: #10b981;
+            color: white;
+        }
+    </style>
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        .transition-all {
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
+    <style>
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+    <script>
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            if (loader) loader.style.display = 'none';
+        });
+    </script>
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+
+    </head>
+
+ <body>
+        <!-- Navigation -->
+
+    <body class="text-white">
+    <nav class="fixed w-full z-20 bg-green-900/90 backdrop-blur shadow-md py-3">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-leaf text-lime-400 text-2xl"></i>
+                <h1 class="text-xl font-bold text-white">Agri<span class="text-lime-400">Sakhsham</span></h1>
+            </div>
+            <div class="space-x-4 hidden md:block text-lime-100">
+                <a href="home" class="hover:text-lime-400">Home</a>
+                <a href="ai_assistant" class="hover:text-lime-400">Voice Assistant</a>
+                <a href="crop_recommendation" class="hover:text-lime-400">Crop Prediction</a>
+                <a href="DiseasePrediction" class="hover:text-lime-400">Disease Detection</a>
+                <a href="fertilizer_recommendation2" class="hover:text-lime-400">Fertilizer Advisor</a>
+                <a href="subsidy" class="hover:text-lime-400">Subsidy Finder</a>
+                 <a href="forecast" class="hover:text-lime-400">Smart Weather</a>
+            </div>
+        </div>
+    </nav>
+
+            <main class="pt-28 px-4">
+
+
+                <!-- Hero Section -->
+                <section class="hero-gradient pt-32 pb-20 px-4 sm:px-6 lg:px-8 text-white">
+                    <div class="max-w-7xl mx-auto">
+                        <div class="md:flex md:items-center md:justify-between">
+                            <div class="md:w-1/2 mb-10 md:mb-0">
+                                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 glow-text">
+                                    <span class="block">Government</span>
+                                    <span class="block text-green-300">Subsidy Finder</span>
+                                </h1>
+                                <p class="text-lg md:text-xl mb-8 opacity-90">
+                                    Discover financial assistance programs, grants, and subsidies available for your
+                                    farming operations. Our database includes all major central and state government
+                                    schemes.
+                                </p>
+                                <div class="bg-white bg-opacity-20 rounded-lg p-4 mb-8">
+                                    <p class="font-medium mb-2">"Farmers using our subsidy finder have claimed an
+                                        average of ₹45,000 in unclaimed benefits!"</p>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-yellow-300 mr-1"></i>
+                                        <i class="fas fa-star text-yellow-300 mr-1"></i>
+                                        <i class="fas fa-star text-yellow-300 mr-1"></i>
+                                        <i class="fas fa-star text-yellow-300 mr-1"></i>
+                                        <i class="fas fa-star text-yellow-300 mr-1"></i>
+                                        <span class="ml-2 text-sm">4.9/5 from 1,200+ farmers</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="md:w-1/2 relative">
+                                <div class="bg-white rounded-xl p-6 shadow-2xl">
+                                    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Find Your Subsidies
+                                    </h3>
+                                    <form id="subsidyForm">
+                                        <div class="mb-4">
+                                            <label class="block text-gray-700 text-sm font-medium mb-2"
+                                                for="state">State</label>
+                                            <select
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-green-500"
+                                                id="state">
+                                                <option value="">Select your state</option>
+                                                <option value="andhra">Andhra Pradesh</option>
+                                                <option value="karnataka">Karnataka</option>
+                                                <option value="tamilnadu">Tamil Nadu</option>
+                                                <option value="maharashtra">Maharashtra</option>
+                                                <option value="punjab">Punjab</option>
+                                                <option value="haryana">Haryana</option>
+                                                <option value="up">Uttar Pradesh</option>
+                                                <option value="rajasthan">Rajasthan</option>
+                                                <option value="gujarat">Gujarat</option>
+                                                <option value="bihar">Bihar</option>
+                                                <option value="westbengal">West Bengal</option>
+                                                <option value="odisha">Odisha</option>
+                                                <option value="kerala">Kerala</option>
+                                                <option value="telangana">Telangana</option>
+                                                <option value="assam">Assam</option>
+                                                <option value="jharkhand">Jharkhand</option>
+                                                <option value="chhattisgarh">Chhattisgarh</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="block text-gray-700 text-sm font-medium mb-2"
+                                                for="crop">Primary Crop</label>
+                                            <select
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-green-500"
+                                                id="crop">
+                                                <option value="">Select your primary crop</option>
+                                                <option value="rice">Rice</option>
+                                                <option value="wheat">Wheat</option>
+                                                <option value="corn">Corn</option>
+                                                <option value="sugarcane">Sugarcane</option>
+                                                <option value="cotton">Cotton</option>
+                                                <option value="soybean">Soybean</option>
+                                                <option value="vegetables">Vegetables</option>
+                                                <option value="fruits">Fruits</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="land" class="block text-sm font-medium text-white mb-1">Land
+                                                Size (in acres)</label>
+                                            <input type="number" id="land" name="land" min="0" step="0.1"
+                                                class="w-full px-4 py-2 rounded-lg border border-green-400 focus:outline-none focus:ring-2 focus:ring-lime-500 text-black"
+                                                placeholder="Enter land size">
+                                        </div>
+                                </div>
+                                <button
+                                    class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-md transition duration-300 flex items-center justify-center"
+                                    type="submit">
+                                    <i class="fas fa-search mr-2"></i> Find Subsidies
+                                </button>
+                                </form>
+                            </div>
+                            <div class="absolute -bottom-6 -center-6 bg-white p-4 rounded-xl shadow-lg">
+                                <div class="flex items-center">
+                                    <div class="bg-green-100 p-3 rounded-full mr-3">
+                                        <i class="fas fa-rupee-sign text-green-600 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500 text-sm">Average Claim</p>
+                                        <p class="font-bold text-gray-800">₹45,000</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </section>
+                <!-- How It Works -->
+                <section class="py-16 bg-white px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-7xl mx-auto">
+                        <div class="text-center mb-16">
+                            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">How It <span
+                                    class="text-green-500">Works</span></h2>
+                            <p class="text-lg text-gray-500 max-w-3xl mx-auto">
+                                Our subsidy finder makes it easy to discover and apply for government agricultural
+                                programs in
+                                just 3 simple steps.
+                            </p>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <div class="text-center p-6">
+                                <div
+                                    class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                                    <span class="text-green-600 text-2xl font-bold">1</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-3">Answer Questions</h3>
+                                <p class="text-gray-500">
+                                    Tell us about your farm location, crops, and operations through our simple form.
+                                </p>
+                            </div>
+                            <div class="text-center p-6">
+                                <div
+                                    class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                                    <span class="text-blue-600 text-2xl font-bold">2</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-3">Get Matched</h3>
+                                <p class="text-gray-500">
+                                    Our system matches you with all eligible subsidies based on your profile.
+                                </p>
+                            </div>
+                            <div class="text-center p-6">
+                                <div
+                                    class="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                                    <span class="text-purple-600 text-2xl font-bold">3</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-3">Apply Easily</h3>
+                                <p class="text-gray-500">
+                                    We guide you through the application process with all required documents.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Subsidy Results -->
+                <!-- In the Subsidy Results section, modify the container and add pagination controls -->
+                <section class="py-16 bg-gray-50 px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-7xl mx-auto">
+                        <div class="text-center mb-12">
+                            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Available <span
+                                    class="text-green-500">Subsidies</span></h2>
+                            <p class="text-lg text-gray-500 max-w-3xl mx-auto">
+                                Explore government schemes that can benefit your farming operations
+                            </p>
+                        </div>
+                        <div class="max-w-2xl mx-auto mb-8">
+                            <input
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                                id="searchBox" placeholder="Search subsidies by keyword..." type="text" />
+                        </div>
+                        <div class="max-w-2xl mx-auto mb-4">
+                            <label class="block text-gray-700 mb-2 font-medium" for="sortSelect">Sort by:</label>
+                            <select class="w-full px-4 py-2 border border-gray-300 rounded-lg" id="sortSelect"
+                                onchange="sortSubsidies()">
+                                <option value="name">Scheme Name (A-Z)</option>
+                                <option value="type">Scheme Type</option>
+                            </select>
+                        </div>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="subsidyResults">
+                            <!-- Subsidy cards will be dynamically inserted here -->
+                        </div>
+                        <!-- Pagination Controls -->
+                        <div class="flex justify-center mt-8 space-x-2" id="paginationControls">
+                            <button
+                                class="px-4 py-2 bg-gray-200 rounded-md hover:bg-green-500 hover:text-white disabled:opacity-50"
+                                id="prevPage">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="flex space-x-2" id="pageNumbers">
+                                <!-- Page numbers will be inserted here -->
+                            </div>
+                            <button
+                                class="px-4 py-2 bg-gray-200 rounded-md hover:bg-green-500 hover:text-white disabled:opacity-50"
+                                id="nextPage">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                <section class="py-16 bg-gray-50 px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-7xl mx-auto">
+                        <div class="text-center mb-12">
+                            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Available <span
+                                    class="text-green-500">Subsidies</span></h2>
+                            <p class="text-lg text-gray-500 max-w-3xl mx-auto">
+                                Explore government schemes that can benefit your farming operations
+                            </p>
+                        </div>
+                        <div class="max-w-2xl mx-auto mb-8">
+                            <input
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                                id="searchBox" placeholder="Search subsidies by keyword..." type="text" />
+                        </div>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="subsidyResults">
+                            <!-- Subsidy cards will be dynamically inserted here -->
+                        </div>
+                        <div class="text-center mt-12">
+                            <button
+                                class="border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white px-8 py-3 rounded-md font-bold transition duration-300">
+                                Load More Subsidies
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                <!-- Testimonials -->
+                <section class="py-16 bg-white px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-7xl mx-auto">
+                        <div class="text-center mb-12">
+                            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Success <span
+                                    class="text-green-500">Stories</span></h2>
+                            <p class="text-lg text-gray-500 max-w-3xl mx-auto">
+                                Farmers who benefited from government subsidies with our help
+                            </p>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <div class="bg-gray-50 p-8 rounded-xl">
+                                <div class="flex items-center mb-4">
+                                    <div class="text-yellow-400 mr-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 mb-6">
+                                    "I am a small farmer from Karnataka. With AgriShaksham's help, I received ₹75,000
+                                    subsidy for my drip irrigation system. The team explained everything in Kannada and
+                                    made the application process very easy for me and my family!"
+                                </p>
+                                <div class="flex items-center">
+                                    <img alt="Farmer" class="w-12 h-12 rounded-full mr-4" src="/static/image2.jpg" />
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">Rajesh Gottipatti</h4>
+                                        <p class="text-sm text-gray-500">Vegetable Farmer, Karnataka</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 p-8 rounded-xl">
+                                <div class="flex items-center mb-4">
+                                    <div class="text-yellow-400 mr-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 mb-6">
+                                    "I am an Indian farmer and with the help of AgriShaksham's subsidy finder, I
+                                    received a 50% subsidy on my new tractor. Without this platform, I would not have
+                                    known about such government schemes."
+                                </p>
+                                <div class="flex items-center">
+                                    <img alt="Farmer" class="w-12 h-12 rounded-full mr-4" src="/static/image3.jpeg" />
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">Priyanka Sharma</h4>
+                                        <p class="text-sm text-gray-500">Wheat Farmer, Punjab</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 p-8 rounded-xl">
+                                <div class="flex items-center mb-4">
+                                    <div class="text-yellow-400 mr-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 mb-6">
+                                    "I am an Indian farmer from Maharashtra. Thanks to AgriSakhsham, I received a
+                                    subsidy
+                                    that covered most of my organic certification costs. The team explained the process
+                                    in Marathi and helped me with all the paperwork. Now, my farm is certified organic
+                                    and I get better prices for my produce!"
+                                </p>
+                                <div class="flex items-center">
+                                    <img alt="Farmer" class="w-12 h-12 rounded-full mr-4" src="/static/image1.webp" />
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">Vikram Shinde</h4>
+                                        <p class="text-sm text-gray-500">Organic Farmer, Maharashtra</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- FAQ Section -->
+                <section class="py-16 bg-gray-50 px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-7xl mx-auto">
+                        <div class="text-center mb-12">
+                            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Frequently Asked <span
+                                    class="text-green-500">Questions</span></h2>
+                            <p class="text-lg text-gray-500 max-w-3xl mx-auto">
+                                Everything you need to know about agricultural subsidies
+                            </p>
+                        </div>
+                        <div class="max-w-3xl mx-auto">
+                            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                                <!-- FAQ Item 1 -->
+                                <div class="border-b border-gray-200">
+                                    <button class="flex justify-between items-center w-full p-6 text-left">
+                                        <span class="text-lg font-medium text-gray-800">How current is your subsidy
+                                            information?</span>
+                                        <i class="fas fa-chevron-down text-green-500"></i>
+                                    </button>
+                                    <div class="px-6 pb-6 hidden">
+                                        <p class="text-gray-500">
+                                            Our database is updated weekly with the latest government schemes from
+                                            central and
+                                            state agricultural departments. We monitor official gazettes and ministry
+                                            announcements to ensure you have access to the most current programs.
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- FAQ Item 2 -->
+                                <div class="border-b border-gray-200">
+                                    <button class="flex justify-between items-center w-full p-6 text-left">
+                                        <span class="text-lg font-medium text-gray-800">Is there a cost to use this
+                                            service?</span>
+                                        <i class="fas fa-chevron-down text-green-500"></i>
+                                    </button>
+                                    <div class="px-6 pb-6 hidden">
+                                        <p class="text-gray-500">
+                                            Our subsidy finder is completely free to use. AgroTech makes money through
+                                            premium
+                                            services like document preparation and application filing assistance, but
+                                            discovering available subsidies will always be free for farmers.
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- FAQ Item 3 -->
+                                <div class="border-b border-gray-200">
+                                    <button class="flex justify-between items-center w-full p-6 text-left">
+                                        <span class="text-lg font-medium text-gray-800">What documents do I need to
+                                            apply?</span>
+                                        <i class="fas fa-chevron-down text-green-500"></i>
+                                    </button>
+                                    <div class="px-6 pb-6 hidden">
+                                        <p class="text-gray-500">
+                                            Requirements vary by scheme but typically include: land records (7/12
+                                            extract),
+                                            Aadhaar card, bank details, caste certificate (if applicable), and sometimes
+                                            photos
+                                            of your farm. For equipment subsidies, you may need dealer quotations. We
+                                            provide a
+                                            customized checklist for each subsidy you qualify for.
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- FAQ Item 4 -->
+                                <div class="border-b border-gray-200">
+                                    <button class="flex justify-between items-center w-full p-6 text-left">
+                                        <span class="text-lg font-medium text-gray-800">How long does it take to receive
+                                            subsidy
+                                            funds?</span>
+                                        <i class="fas fa-chevron-down text-green-500"></i>
+                                    </button>
+                                    <div class="px-6 pb-6 hidden">
+                                        <p class="text-gray-500">
+                                            Processing times vary by scheme but typically range from 30-90 days after
+                                            submitting
+                                            a complete application. Some subsidies are paid upfront (like training
+                                            programs),
+                                            while others reimburse after purchase (like equipment subsidies). We track
+                                            your
+                                            application status and follow up with authorities if delays occur.
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- FAQ Item 5 -->
+                                <div class="">
+                                    <button class="flex justify-between items-center w-full p-6 text-left">
+                                        <span class="text-lg font-medium text-gray-800">Can I apply for multiple
+                                            subsidies?</span>
+                                        <i class="fas fa-chevron-down text-green-500"></i>
+                                    </button>
+                                    <div class="px-6 pb-6 hidden">
+                                        <p class="text-gray-500">
+                                            Yes! Many farmers qualify for 3-5 different subsidy programs simultaneously.
+                                            However, some subsidies cannot be combined (like two different irrigation
+                                            subsidies). Our system automatically flags any conflicts and helps you
+                                            maximize your
+                                            benefits without violating program rules.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- CTA Section -->
+                <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white">
+                    <div class="max-w-7xl mx-auto text-center">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6">Find Subsidies for <span
+                                class="text-green-400">Your
+                                Farm</span></h2>
+                        <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                            Don't leave money on the table - discover all the government programs you qualify for in
+                            minutes.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                            <button
+                                class="bg-green-500 hover:bg-green-600 px-8 py-4 rounded-md font-bold text-lg transition duration-300 flex items-center justify-center mx-auto sm:mx-0">
+                                <i class="fas fa-search mr-3"></i> Check Eligibility
+                            </button>
+                            <button
+                                class="border-2 border-gray-600 hover:border-green-500 hover:text-green-400 px-8 py-4 rounded-md font-bold text-lg transition duration-300 flex items-center justify-center mx-auto sm:mx-0">
+                                <i class="fas fa-question-circle mr-3"></i> Have Questions?
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                <!-- Footer -->
+                <footer class="bg-gray-800 text-white py-12 px-4 sm:px-6 lg:px-8">
+                    <footer id="footer" class="bg-gray-800 text-white py-12 px-4 sm:px-6 lg:px-8">
+                        <section id="solutions" class="..."></section>
+                        <section id="technology" class="..."></section>
+                        <section id="about" class="..."></section>
+                        <section id="contact" class="...">
+                            <!-- content -->
+                        </section>
+
+
+                        <div class="max-w-7xl mx-auto">
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                                <div>
+                                    <h3 class="text-lg font-bold mb-4 flex items-center">
+                                        <i class="fas fa-leaf text-green-500 mr-2"></i> AgriShaksham
+                                    </h3>
+                                    <p class="text-gray-400 mb-4">
+                                        Revolutionizing agriculture through technology for a sustainable future.
+                                    </p>
+                                    <div class="flex space-x-4">
+                                        <a class="text-gray-400 hover:text-green-500" href="#">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                        <a class="text-gray-400 hover:text-green-500" href="#">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a class="text-gray-400 hover:text-green-500" href="#">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                        <a class="text-gray-400 hover:text-green-500" href="#">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold mb-4">Solutions</h3>
+                                    <ul class="space-y-2">
+                                        <li><a class="text-gray-400 hover:text-green-500" href="ai_assistant">Voice
+                                                Assistant</a></li>
+                                        <li><a class="text-gray-400 hover:text-green-500"
+                                                href="crop_recommendation">Crop
+                                                Prediction</a></li>
+                                        <li><a class="text-gray-400 hover:text-green-500"
+                                                href="fertilizer_recommendation">Fertilizer Advisor</a></li>
+                                        <li><a class="text-gray-400 hover:text-green-500" href="subsidy">Subsidy
+                                                Finder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold mb-4">Resources</h3>
+                                    <ul class="space-y-2">
+                                        <li><a class="text-gray-400 hover:text-green-500" href="#">Blog</a></li>
+                                        <li><a class="text-gray-400 hover:text-green-500" href="#">Case Studies</a></li>
+                                        <li><a class="text-gray-400 hover:text-green-500" href="#">Webinars</a></li>
+                                        <li><a class="text-gray-400 hover:text-green-500" href="#">Farm Calculator</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold mb-4">Contact</h3>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center text-gray-400">
+                                            <i class="fas fa-map-marker-alt mr-2 text-green-500"></i> 123 Farm Tech Ave,
+                                            CA
+                                        </li>
+                                        <li class="flex items-center text-gray-400">
+                                            <i class="fas fa-phone-alt mr-2 text-green-500"></i> (555) 123-4567
+                                        </li>
+                                        <li class="flex items-center text-gray-400">
+                                            <i class="fas fa-envelope mr-2 text-green-500"></i> info@agrishaksham.com
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div
+                                class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                                <p class="text-gray-400 mb-4 md:mb-0">
+                                    © 2025 AgriShaksham. All rights reserved.
+                                </p>
+                                <div class="flex space-x-6">
+                                    <a class="text-gray-400 hover:text-green-500" href="#">Privacy Policy</a>
+                                    <a class="text-gray-400 hover:text-green-500" href="#">Terms of Service</a>
+                                    <a class="text-gray-400 hover:text-green-500" href="#">Sitemap</a>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                    <script>
+                        const subsidyData = {
+                            "subsidy_schemes": [
+                                {
+                                    "id": 1,
+                                    "name": "PM-KISAN",
+                                    "type": "Central Sector",
+                                    "description": "Provides Rs. 6000 annually to landholding farmers in three installments via DBT.",
+                                    "detailed_description": "Launched in 2019, PM-KISAN provides income support of Rs. 6,000 per year to all landholding farmer families. The amount is released in three 4-monthly installments of Rs. 2,000 each. It aims to supplement the financial needs of farmers.",
+                                    "application_process": "Farmers can register via the official PM-KISAN portal (https://pmkisan.gov.in), Common Service Centers (CSCs), or through local Patwaris or revenue officers. Documents required include Aadhaar card, bank account details, and land ownership documents."
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "PM-KMY",
+                                    "type": "Central Sector",
+                                    "description": "Voluntary pension scheme for small and marginal farmers; Rs. 3000/month after 60 years.",
+                                    "detailed_description": "The PM-KMY is a pension scheme for small and marginal farmers launched in 2019. Farmers aged 18 to 40 contribute Rs. 55 to Rs. 200 monthly, with a matching contribution by the government. They receive a pension of Rs. 3,000 per month after attaining 60 years of age.",
+                                    "application_process": "Farmers can enroll through Common Service Centers (CSCs) by providing Aadhaar card, bank passbook, and age proof. The LIC manages the pension fund."
+                                },
+                                {
+                                    "id": 3,
+                                    "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+                                    "type": "Central Sector",
+                                    "description": "Affordable crop insurance for natural risks, covering pre-sowing to post-harvest.",
+                                    "detailed_description": "PMFBY provides insurance coverage to farmers against crop loss due to natural calamities, pests, and diseases. It aims to stabilize farmer income and encourage adoption of innovative practices.",
+                                    "application_process": "Farmers can apply through their banks, nearest agriculture office, or online via the PMFBY portal (https://pmfby.gov.in). Applications are generally submitted before sowing. Documents include Aadhaar, land records, and crop sown declaration."
+                                },
+                                {
+                                    "id": 4,
+                                    "name": "Modified Interest Subvention Scheme (MISS)",
+                                    "type": "Central Sector",
+                                    "description": "Subsidized short-term crop loans at 4% interest for timely repayment.",
+                                    "detailed_description": "MISS provides short-term credit to farmers at a subsidized interest rate of 4% per annum for prompt repayment. It covers crop loans and post-harvest loans against NWRs for up to Rs. 3 lakhs.",
+                                    "application_process": "Farmers can apply through Kisan Credit Cards (KCC) at banks. The interest subvention is auto-applied by banks upon timely repayment."
+                                },
+                                {
+                                    "id": 5,
+                                    "name": "Agriculture Infrastructure Fund (AIF)",
+                                    "type": "Central Sector",
+                                    "description": "Rs. 1 lakh crore fund to support post-harvest infra and community farming.",
+                                    "detailed_description": "AIF is a Rs. 1 lakh crore scheme providing long-term financing for infrastructure like warehouses, cold storage, and processing units. It offers 3% interest subvention and credit guarantee.",
+                                    "application_process": "Eligible beneficiaries such as FPOs, PACS, SHGs, and agri-entrepreneurs can apply via the AIF portal (https://agriinfra.dac.gov.in) by submitting project proposals with financial and land documents."
+                                },
+                                {
+                                    "id": 6,
+                                    "name": "Formation & Promotion of 10,000 FPOs",
+                                    "type": "Central Sector",
+                                    "description": "Supports formation of FPOs with financial aid, equity grants and credit guarantees."
+                                },
+                                {
+                                    "id": 7,
+                                    "name": "National Beekeeping and Honey Mission (NBHM)",
+                                    "type": "Central Sector",
+                                    "description": "Promotes beekeeping for pollination, productivity, and income via infrastructure and training."
+                                },
+                                {
+                                    "id": 8,
+                                    "name": "Market Intervention Scheme and Price Support Scheme (MIS-PSS)",
+                                    "type": "Central Sector",
+                                    "description": "Procurement support to prevent distress sale of crops at low prices."
+                                },
+                                {
+                                    "id": 9,
+                                    "name": "Namo Drone Didi",
+                                    "type": "Central Sector",
+                                    "description": "Provides drones to SHGs for agriculture rental services with 80% subsidy.",
+                                    "detailed_description": "Aims to empower 15,000 women SHGs by providing them with drones for agricultural services. Subsidy of up to 80% (maximum Rs. 8 lakh) and interest subvention of 3% is provided for drone procurement.",
+                                    "application_process": "Women SHGs can apply via Cluster Level Federations under the AIF scheme. They must submit business plans, group registration, and quotation for drone equipment."
+                                },
+                                {
+                                    "id": 10,
+                                    "name": "Rashtriya Krishi Vikas Yojana - DPR",
+                                    "type": "Centrally Sponsored",
+                                    "description": "Funds states for flexible agri-projects and infrastructure based on local needs."
+                                },
+                                {
+                                    "id": 11,
+                                    "name": "Soil Health Card (SHC)",
+                                    "type": "Centrally Sponsored",
+                                    "description": "Advises farmers on optimal nutrient usage based on soil testing."
+                                },
+                                {
+                                    "id": 12,
+                                    "name": "Rainfed Area Development (RAD)",
+                                    "type": "Centrally Sponsored",
+                                    "description": "Promotes Integrated Farming System to boost income and climate resilience."
+                                },
+                                {
+                                    "id": 13,
+                                    "name": "Per Drop More Crop (PDMC)",
+                                    "type": "Centrally Sponsored",
+                                    "description": "Encourages drip and sprinkler irrigation for better water use efficiency."
+                                },
+                                {
+                                    "id": 14,
+                                    "name": "Micro Irrigation Fund (MIF)",
+                                    "type": "Centrally Sponsored",
+                                    "description": "Facilitates funds via NABARD for expanding micro irrigation coverage."
+                                },
+                                {
+                                    "id": 15,
+                                    "name": "Paramparagat Krishi Vikas Yojana (PKVY)",
+                                    "type": "Centrally Sponsored",
+                                    "description": "Promotes organic farming in clusters with financial support and training."
+                                },
+                                {
+                                    "id": 16,
+                                    "name": "Sub-Mission on Agriculture Mechanization (SMAM)",
+                                    "type": "Centrally Sponsored",
+                                    "description": "Promotes use of farm machinery among small farmers; includes drone support."
+                                },
+                                {
+                                    "id": 17,
+                                    "name": "Crop Residue Management",
+                                    "type": "Centrally Sponsored",
+                                    "description": "Aims to reduce stubble burning by supporting in-situ residue management."
+                                },
+                                {
+                                    "id": 18,
+                                    "name": "Agro-forestry",
+                                    "type": "Centrally Sponsored",
+                                    "description": "Promotes plantation on farmland to enhance farmer income and ecosystem."
+                                },
+                                {
+                                    "id": 19,
+                                    "name": "National Food Security Mission (NFSM)",
+                                    "type": "Krishonnati Yojana",
+                                    "description": "Increases production of cereals and pulses via productivity improvements."
+                                },
+                                {
+                                    "id": 20,
+                                    "name": "Sub-Mission on Seed and Planting Material (SMSP)",
+                                    "type": "Krishonnati Yojana",
+                                    "description": "Strengthens seed production chain and traceability from nucleus to certified seed."
+                                },
+                                {
+                                    "id": 21,
+                                    "name": "National Mission on Edible Oils - Oil Palm (NMEO-OP)",
+                                    "type": "Krishonnati Yojana",
+                                    "description": "Promotes oil palm cultivation to reduce import dependency."
+                                },
+                                {
+                                    "id": 22,
+                                    "name": "Mission for Integrated Development of Horticulture (MIDH)",
+                                    "type": "Krishonnati Yojana",
+                                    "description": "Supports holistic growth of horticulture with infrastructure and marketing support."
+                                },
+                                {
+                                    "id": 23,
+                                    "name": "National Bamboo Mission (NBM)",
+                                    "type": "Krishonnati Yojana",
+                                    "description": "Promotes bamboo cultivation and industry through nursery, plantation, and value addition."
+                                },
+                                {
+                                    "id": 24,
+                                    "name": "Integrated Scheme for Agriculture Marketing (ISAM)",
+                                    "type": "Krishonnati Yojana",
+                                    "description": "Improves market infrastructure and supports e-NAM for agri-trading."
+                                },
+                                {
+                                    "id": 25,
+                                    "name": "Mission Organic Value Chain Development for North Eastern Region",
+                                    "type": "Krishonnati Yojana",
+                                    "description": "Develops certified organic value chains in Northeast India."
+                                },
+                                {
+                                    "id": 26,
+                                    "name": "Sub-Mission on Agriculture Extension (SMAE)",
+                                    "type": "Krishonnati Yojana",
+                                    "description": "Farmer-centric extension reforms using digital tools and institutional support."
+                                },
+                                {
+                                    "id": 27,
+                                    "name": "Digital Agriculture",
+                                    "type": "Krishonnati Yojana",
+                                    "description": "Builds digital public infrastructure for inclusive and tech-enabled agri-solutions."
+                                },
+                                {
+                                    "id": 28,
+                                    "name": "Kisan Credit Card (KCC)",
+                                    "type": "Central Sector",
+                                    "detailed_description": "The KCC scheme was introduced in 1998 to provide farmers with timely access to credit. It enables farmers to purchase agriculture inputs such as seeds, fertilizers, and pesticides and to draw cash for their production needs.",
+                                    "application_process": "Farmers can apply at cooperative banks, regional rural banks, or commercial banks by submitting identity proof (Aadhaar), land ownership documents, and crop details. Banks assess the credit limit and issue the card accordingly."
+                                },
+                                {
+                                    "id": 29,
+                                    "name": "eNAM (National Agriculture Market)",
+                                    "type": "Central Sector",
+                                    "detailed_description": "eNAM is a pan-India electronic trading portal that networks the existing APMC mandis to create a unified national market for agricultural commodities. It enhances transparency and price discovery through online bidding.",
+                                    "application_process": "Farmers can register on the eNAM portal (https://enam.gov.in/) through the nearest mandi or by visiting the APMC office. They must provide ID proof and land/crop details."
+                                },
+                                {
+                                    "id": 30,
+                                    "name": "National Mission for Sustainable Agriculture (NMSA)",
+                                    "type": "Krishonnati Yojana",
+                                    "detailed_description": "NMSA aims to make agriculture more productive, sustainable, and climate-resilient by promoting resource conservation technologies, integrated farming systems, and soil health management.",
+                                    "application_process": "Farmers can apply through State Agriculture Departments or Krishi Vigyan Kendras (KVKs) for assistance under the components of NMSA. Application requires farm and soil details."
+                                },
+                                {
+                                    "id": 31,
+                                    "name": "National Mission on Medicinal Plants(NMMP)",
+                                    "type": "Medicinal Plants",
+                                    "description": "Promotes cultivation of medicinal plants.",
+                                    "detailed_description": "Promotes cultivation of medicinal plants through area expansion and post-harvest management support.",
+                                    "application_process": "Apply through National Medicinal Plants Board or State Agencies."
+                                },
+                                {
+                                    "id": 32,
+                                    "name": "National Saffron Mission(NSM)",
+                                    "type": "Spice Cultivation",
+                                    "description": "Enhances saffron production in J&K.",
+                                    "detailed_description": "Enhances saffron production in J&K through improved seed, irrigation and processing facilities.",
+                                    "application_process": "Implemented through J&K Agriculture Department."
+                                },
+                                {
+                                    "id": 33,
+                                    "name": "Coconut Development Board Schemes(CDBS)",
+                                    "type": "Horticulture",
+                                    "description": "Various schemes for coconut cultivation.",
+                                    "detailed_description": "Various schemes for coconut cultivation including replanting, processing and product diversification.",
+                                    "application_process": "Apply through Coconut Development Board offices."
+                                },
+                                {
+                                    "id": 34,
+                                    "name": "National Programme for Organic Production (NPOP)",
+                                    "type": "Organic Certification",
+                                    "description": "Assistance for organic certification.",
+                                    "detailed_description": "Provides assistance for organic certification (50-75% of cost) to individual farmers and groups.",
+                                    "application_process": "Apply through Agricultural and Processed Food Products Export Development Authority (APEDA)."
+                                },
+                                {
+                                    "id": 35,
+                                    "name": "Integrated Scheme on Agricultural Cooperation (ISAC)",
+                                    "type": "Cooperative Development",
+                                    "description": "Strengthens agricultural cooperatives.",
+                                    "detailed_description": "Strengthens agricultural cooperatives through training, infrastructure and modernization support.",
+                                    "application_process": "Cooperatives can apply through NCDC or State Cooperative Departments."
+                                },
+                                {
+                                    "id": 36,
+                                    "name": "Integrated Scheme on Agricultural Marketing (ISAM)",
+                                    "type": "Marketing",
+                                    "description": "Develops agricultural marketing infrastructure.",
+                                    "detailed_description": "Develops agricultural marketing infrastructure including e-NAM, godowns and market yards.",
+                                    "application_process": "Apply through State Agricultural Marketing Boards."
+                                },
+                                {
+                                    "id": 37,
+                                    "name": "Market Intervention Scheme and Price Support Scheme (MIS-PSS)",
+                                    "type": "Price Support",
+                                    "description": "Price support for perishable commodities.",
+                                    "detailed_description": "Provides price support for perishable commodities when prices fall below specified levels.",
+                                    "application_process": "Implemented through State Agencies."
+                                },
+                                {
+                                    "id": 38,
+                                    "name": "Price Stabilization Fund (PSF)",
+                                    "type": "Price Stability",
+                                    "description": "Maintains agricultural commodity price stability.",
+                                    "detailed_description": "Maintains price stability for agricultural commodities through market interventions.",
+                                    "application_process": "Operated through Central/State Agencies."
+                                },
+                                {
+                                    "id": 39,
+                                    "name": "National Agricultural Market (e-NAM)",
+                                    "type": "Digital Marketplace",
+                                    "description": "Online trading platform for agricultural commodities.",
+                                    "detailed_description": "Online trading platform for agricultural commodities integrating APMC markets across India.",
+                                    "application_process": "Farmers can register through local APMC markets."
+                                },
+                                {
+                                    "id": 40,
+                                    "name": "Kisan Rath Mobile App",
+                                    "type": "Logistics",
+                                    "description": "Connects farmers with transporters.",
+                                    "detailed_description": "Facilitates transportation of agricultural produce by connecting farmers with transporters.",
+                                    "application_process": "Farmers can register on the mobile app."
+                                },
+                                {
+                                    "id": 41,
+                                    "name": "Pradhan Mantri Annadata Aay Sanrakshan Abhiyan (PM-AASHA)",
+                                    "type": "Price Support",
+                                    "description": "Comprehensive price support scheme.",
+                                    "detailed_description": "Comprehensive scheme including Price Support Scheme, Price Deficiency Payment Scheme and Pilot of Private Procurement Scheme.",
+                                    "application_process": "Implemented through State Agencies."
+                                },
+                                {
+                                    "id": 42,
+                                    "name": "National Programme for Cold Chain Development(NPCC-D)",
+                                    "type": "Cold Chain",
+                                    "description": "Develops integrated cold chain infrastructure.",
+                                    "detailed_description": "Develops integrated cold chain infrastructure from farm gate to consumer with 35-50% subsidy.",
+                                    "application_process": "Apply through Ministry of Food Processing Industries."
+                                },
+                                {
+                                    "id": 43,
+                                    "name": "Operation Greens",
+                                    "type": "Price Stability",
+                                    "description": "Stabilizes prices of TOP (Tomato, Onion, Potato) crops.",
+                                    "detailed_description": "Stabilizes prices of TOP (Tomato, Onion, Potato) crops through processing and storage interventions.",
+                                    "application_process": "Implemented through NAFED and other agencies."
+                                },
+                                {
+                                    "id": 44,
+                                    "name": "Formation and Promotion of Farmer Producer Organizations (FPOs)",
+                                    "type": "Collective Farming",
+                                    "description": "Supports formation of farmer producer organizations.",
+                                    "detailed_description": "Provides matching equity grant up to ₹15 lakh per FPO and credit guarantee for aggregation and marketing.",
+                                    "application_process": "Promoted through NABARD, SFAC and State Agencies."
+                                },
+                                {
+                                    "id": 45,
+                                    "name": "Agricultural Marketing Infrastructure (AMI)",
+                                    "type": "Marketing",
+                                    "description": "Subsidy for agricultural marketing infrastructure.",
+                                    "detailed_description": "Subsidy for construction of markets, grading units and other marketing infrastructure.",
+                                    "application_process": "Apply through State Agricultural Marketing Boards."
+                                },
+                                {
+                                    "id": 46,
+                                    "name": "National Mission on Seed Spices",
+                                    "type": "Spice Cultivation",
+                                    "description": "Enhances production of seed spices.",
+                                    "detailed_description": "Enhances production and productivity of seed spices like cumin, fennel and coriander.",
+                                    "application_process": "Implemented through State Horticulture Departments."
+                                },
+                                {
+                                    "id": 47,
+                                    "name": "National Mission on Natural Farming",
+                                    "type": "Natural Farming",
+                                    "description": "Promotes chemical-free natural farming.",
+                                    "detailed_description": "Promotes chemical-free farming through Bhartiya Prakritik Krishi Paddhati Programme.",
+                                    "application_process": "Farmers can enroll through State Agriculture Departments."
+                                },
+                                {
+                                    "id": 48,
+                                    "name": "Central Sector Scheme on Blue Revolution",
+                                    "type": "Fisheries",
+                                    "description": "Comprehensive fisheries development scheme.",
+                                    "detailed_description": "Comprehensive development of fisheries sector including inland, marine and aquaculture.",
+                                    "application_process": "Apply through State Fisheries Departments."
+                                },
+                                {
+                                    "id": 49,
+                                    "name": "National Scheme on Welfare of Fishermen",
+                                    "type": "Fisheries",
+                                    "description": "Welfare scheme for traditional fishermen.",
+                                    "detailed_description": "Provides insurance, housing and saving relief components for traditional fishermen.",
+                                    "application_process": "Implemented through State Fisheries Departments."
+                                },
+                                {
+                                    "id": 50,
+                                    "name": "National Programme for Bovine Breeding and Dairy Development (NPBBDD)",
+                                    "type": "Dairy",
+                                    "description": "Improves bovine genetics and dairy development.",
+                                    "detailed_description": "Improves genetic potential of bovines and dairy development through field projects.",
+                                    "application_process": "Implemented through State Animal Husbandry Departments."
+                                },
+                                {
+                                    "id": 51,
+                                    "name": "Livestock Health and Disease Control (LH&DC) Scheme",
+                                    "type": "Animal Health",
+                                    "description": "Livestock vaccination and disease control.",
+                                    "detailed_description": "Provides vaccination and disease control for livestock including FMD control programme.",
+                                    "application_process": "Implemented through State Animal Husbandry Departments."
+                                },
+                                {
+                                    "id": 52,
+                                    "name": "National Animal Disease Control Programme (NADCP)",
+                                    "type": "Animal Health",
+                                    "description": "Disease control for Foot & Mouth Disease and Brucellosis.",
+                                    "detailed_description": "100% centrally funded scheme for control of Foot & Mouth Disease and Brucellosis.",
+                                    "application_process": "Implemented through State Animal Husbandry Departments."
+                                },
+                                {
+                                    "id": 53,
+                                    "name": "Rashtriya Gokul Mission",
+                                    "type": "Animal Breeding",
+                                    "description": "Conservation and development of indigenous bovine breeds.",
+                                    "detailed_description": "Develops and conserves indigenous bovine breeds through establishment of Gokul Grams.",
+                                    "application_process": "Implemented through State Implementing Agencies."
+                                },
+                                {
+                                    "id": 54,
+                                    "name": "National Programme for Dairy Development (NPDD)",
+                                    "type": "Dairy",
+                                    "description": "Strengthens milk production and procurement.",
+                                    "detailed_description": "Strengthens infrastructure for quality milk production and procurement in traditional milksheds.",
+                                    "application_process": "Implemented through State Dairy Departments."
+                                },
+                                {
+                                    "id": 55,
+                                    "name": "Dairy Processing and Infrastructure Development Fund (DIDF)",
+                                    "type": "Dairy",
+                                    "description": "Modernization of dairy cooperatives.",
+                                    "detailed_description": "Provides loans with interest subvention for dairy cooperatives for modernization.",
+                                    "application_process": "Apply through NABARD or NDDB."
+                                },
+                                {
+                                    "id": 56,
+                                    "name": "National Beekeeping & Honey Mission (NBHM)",
+                                    "type": "Apiculture",
+                                    "description": "Promotes scientific beekeeping.",
+                                    "detailed_description": "Promotes scientific beekeeping through training, infrastructure development and market support.",
+                                    "application_process": "Apply through State Horticulture/Agriculture Departments."
+                                },
+                                {
+                                    "id": 57,
+                                    "name": "Silk Samagra Yojana",
+                                    "type": "Sericulture",
+                                    "description": "Integrated silk industry development.",
+                                    "detailed_description": "Integrated scheme for development of silk industry through R&D, seed support and post-cocoon sector.",
+                                    "application_process": "Apply through Central Silk Board or State Sericulture Departments."
+                                },
+                                {
+                                    "id": 58,
+                                    "name": "National Mission on Edible Oils - Oil Palm (NMEO-OP)",
+                                    "type": "Oil Palm",
+                                    "description": "Aims for self-reliance in edible oils.",
+                                    "detailed_description": "Aims for self-reliance in edible oils through area expansion in oil palm with price assurance.",
+                                    "application_process": "Apply through State Horticulture Departments."
+                                },
+                                {
+                                    "id": 59,
+                                    "name": "Mission for Integrated Development of Horticulture (MIDH)",
+                                    "type": "Horticulture",
+                                    "description": "Holistic horticulture development.",
+                                    "detailed_description": "Holistic development of horticulture sector covering fruits, vegetables, flowers and spices.",
+                                    "application_process": "Apply through State Horticulture Missions."
+                                },
+                                {
+                                    "id": 60,
+                                    "name": "National Bamboo Mission",
+                                    "type": "Bamboo Development",
+                                    "description": "Promotes bamboo cultivation and value addition.",
+                                    "detailed_description": "Promotes bamboo cultivation and value addition through area expansion and processing units.",
+                                    "application_process": "Apply through State Bamboo Missions."
+                                },
+                                {
+                                    "id": 61,
+                                    "name": "Sub-Mission on Plant Protection and Plant Quarantine",
+                                    "type": "Plant Protection",
+                                    "description": "Strengthens plant protection measures.",
+                                    "detailed_description": "Strengthens plant protection through monitoring, forecasting and quarantine facilities.",
+                                    "application_process": "Implemented through State Agriculture Departments."
+                                },
+                                {
+                                    "id": 62,
+                                    "name": "Sub-Mission on Seeds and Planting Material (SMSP)",
+                                    "type": "Seed Development",
+                                    "description": "Strengthens seed production chain.",
+                                    "detailed_description": "Strengthens seed production chain including seed villages and infrastructure development.",
+                                    "application_process": "Implemented through State Agriculture Departments."
+                                },
+                                {
+                                    "id": 63,
+                                    "name": "National Project on Agroforestry (NPAF)",
+                                    "type": "Agroforestry",
+                                    "description": "Promotes tree plantation in farms.",
+                                    "detailed_description": "Promotes tree plantation in agricultural fields for ecological and economic benefits.",
+                                    "application_process": "Implemented through State Agriculture Departments."
+                                },
+                                {
+                                    "id": 64,
+                                    "name": "National Project on Organic Farming (NPOF)",
+                                    "type": "Organic Farming",
+                                    "description": "Promotes organic inputs and practices.",
+                                    "detailed_description": "Promotes organic inputs like biofertilizers and vermiculture through demonstration and training.",
+                                    "application_process": "Implemented through State Agriculture Departments."
+                                },
+                                {
+                                    "id": 65,
+                                    "name": "National Project on Management of Soil Health and Fertility (NPMSHF)",
+                                    "type": "Soil Health",
+                                    "description": "Soil test based fertilizer recommendations.",
+                                    "detailed_description": "Promotes soil test based balanced fertilizer use through soil testing labs and mobile vans.",
+                                    "application_process": "Farmers can get soil tested at designated labs."
+                                },
+                                {
+                                    "id": 66,
+                                    "name": "National Watershed Development Project for Rainfed Areas (NWDPRA)",
+                                    "type": "Watershed",
+                                    "description": "Watershed development in rainfed areas.",
+                                    "detailed_description": "Develops watersheds for sustainable production in rainfed areas through soil conservation.",
+                                    "application_process": "Implemented through State Agriculture Departments."
+                                },
+                                {
+                                    "id": 67,
+                                    "name": "Rainfed Area Development Programme (RADP)",
+                                    "type": "Rainfed Farming",
+                                    "description": "Integrated farming in rainfed areas.",
+                                    "detailed_description": "Promotes integrated farming systems in rainfed areas for sustainable livelihoods.",
+                                    "application_process": "Implemented through State Agriculture Departments."
+                                },
+                                {
+                                    "id": 68,
+                                    "name": "National Food Security Mission-Commercial Crops (NFSM-CC)",
+                                    "type": "Commercial Crops",
+                                    "description": "Focuses on commercial crop production.",
+                                    "detailed_description": "Focuses on increasing production of cotton, jute, sugarcane and tobacco.",
+                                    "application_process": "Implemented through State Agriculture Departments."
+                                },
+                                {
+                                    "id": 69,
+                                    "name": "National Mission on Oilseeds and Oil Palm (NMOOP)",
+                                    "type": "Oilseeds",
+                                    "description": "Enhances oilseed production.",
+                                    "detailed_description": "Enhances production of oilseeds through area expansion and productivity improvement.",
+                                    "application_process": "Implemented through State Agriculture Departments."
+                                },
+                                {
+                                    "id": 70,
+                                    "name": "National Mission on Agricultural Extension and Technology (NMAET)",
+                                    "type": "Extension",
+                                    "description": "Strengthens agricultural extension.",
+                                    "detailed_description": "Strengthens agricultural extension through farmer training and ICT initiatives.",
+                                    "application_process": "Implemented through State Agriculture Departments."
+                                },
+                                {
+                                    "id": 71,
+                                    "name": "Sub-Mission on Agricultural Mechanization (SMAM)",
+                                    "type": "Mechanization",
+                                    "description": "Promotes farm mechanization.",
+                                    "detailed_description": "Promotes farm mechanization through subsidies on equipment and custom hiring centers.",
+                                    "application_process": "Apply through State Agriculture Departments."
+                                },
+                                {
+                                    "id": 72,
+                                    "name": "Pradhan Mantri Krishi Sinchai Yojana (PMKSY)",
+                                    "type": "Irrigation",
+                                    "description": "'Water to every field' irrigation mission.",
+                                    "detailed_description": "Aims for 'Har Khet Ko Pani' through micro-irrigation and water use efficiency.",
+                                    "application_process": "Apply through State Agriculture Departments."
+                                },
+                                {
+                                    "id": 73,
+                                    "name": "Per Drop More Crop (PDMC)",
+                                    "type": "Micro Irrigation",
+                                    "description": "Micro irrigation component of PMKSY.",
+                                    "detailed_description": "Component of PMKSY focusing on micro irrigation with 55% subsidy for small/marginal farmers.",
+                                    "application_process": "Apply through State Agriculture/Horticulture Departments."
+                                },
+                                {
+                                    "id": 74,
+                                    "name": "Integrated Scheme on Agricultural Census, Economics and Statistics",
+                                    "type": "Data Collection",
+                                    "description": "Agricultural data collection for policy.",
+                                    "detailed_description": "Conducts agricultural censuses and surveys for policy formulation.",
+                                    "application_process": "Implemented through State Agriculture Departments."
+                                },
+                                {
+                                    "id": 75,
+                                    "name": "National e-Governance Plan in Agriculture (NeGPA)",
+                                    "type": "Digital Agriculture",
+                                    "description": "ICT in agriculture services.",
+                                    "detailed_description": "Promotes use of ICT in agriculture through various farmer-centric services.",
+                                    "application_process": "Implemented through State Agriculture Departments."
+                                },
+                                {
+                                    "id": 76,
+                                    "name": "Kisan Call Centers (KCC)",
+                                    "type": "Advisory",
+                                    "description": "Toll-free agricultural advisory service.",
+                                    "detailed_description": "Provides agricultural advisories in local languages through toll-free number 1800-180-1551.",
+                                    "application_process": "Farmers can call directly for queries."
+                                },
+                                {
+                                    "id": 77,
+                                    "name": "Agricultural Technology Management Agency (ATMA)",
+                                    "type": "Extension",
+                                    "description": "Farmer-centric extension system.",
+                                    "detailed_description": "Farmer-centric extension system at district level for technology dissemination.",
+                                    "application_process": "Farmers can contact District ATMA offices."
+                                },
+                                {
+                                    "id": 78,
+                                    "name": "National Agricultural Higher Education Project (NAHEP)",
+                                    "type": "Education",
+                                    "description": "Strengthens agricultural education.",
+                                    "detailed_description": "Strengthens agricultural education through curriculum reform and infrastructure development.",
+                                    "application_process": "Implemented through Agricultural Universities."
+                                },
+                                {
+                                    "id": 79,
+                                    "name": "National Agricultural Innovation Project (NAIP)",
+                                    "type": "Research",
+                                    "description": "Promotes agricultural innovation.",
+                                    "detailed_description": "Promotes agricultural innovation through research and technology development.",
+                                    "application_process": "Implemented through ICAR institutes."
+                                },
+                                {
+                                    "id": 80,
+                                    "name": "National Initiative on Climate Resilient Agriculture (NICRA)",
+                                    "type": "Climate Adaptation",
+                                    "description": "Climate resilient agricultural technologies.",
+                                    "detailed_description": "Develops and promotes climate resilient technologies in vulnerable districts.",
+                                    "application_process": "Implemented through KVKs and ICAR institutes."
+                                },
+                                {
+                                    "id": 81,
+                                    "name": "Krishi Vigyan Kendra (KVK)",
+                                    "type": "Extension",
+                                    "description": "Farm science centers at district level.",
+                                    "detailed_description": "Farm science centers providing technology testing and demonstration at district level.",
+                                    "application_process": "Farmers can contact local KVKs for training and advisories."
+                                },
+                                {
+                                    "id": 82,
+                                    "name": "Farmer FIRST",
+                                    "type": "Research",
+                                    "description": "Farmer-centric agricultural research.",
+                                    "detailed_description": "Farmer-centric innovation in agricultural research through participatory approaches.",
+                                    "application_process": "Implemented through ICAR institutes."
+                                },
+                                {
+                                    "id": 83,
+                                    "name": "Student READY",
+                                    "type": "Education",
+                                    "description": "Rural entrepreneurship for agri-students.",
+                                    "detailed_description": "Rural Entrepreneurship Awareness Development Yojana for agricultural students.",
+                                    "application_process": "Implemented through Agricultural Universities."
+                                },
+                                {
+                                    "id": 84,
+                                    "name": "Network Project on Agricultural Bioinformatics and Computational Biology",
+                                    "type": "Bioinformatics",
+                                    "description": "Bioinformatics tools for agriculture.",
+                                    "detailed_description": "Develops bioinformatics tools and databases for agricultural research.",
+                                    "application_process": "Implemented through ICAR institutes."
+                                },
+                                {
+                                    "id": 85,
+                                    "name": "National Agricultural Science Fund (NASF)",
+                                    "type": "Research",
+                                    "description": "Supports high-risk agricultural research.",
+                                    "detailed_description": "Supports high-risk, high-reward agricultural research projects.",
+                                    "application_process": "Scientists can apply through ICAR."
+                                },
+                                {
+                                    "id": 86,
+                                    "name": "National Innovations in Climate Resilient Agriculture (NICRA)",
+                                    "type": "Climate Adaptation",
+                                    "description": "Climate resilient farming technologies.",
+                                    "detailed_description": "Develops and promotes climate resilient technologies in vulnerable districts.",
+                                    "application_process": "Implemented through KVKs and ICAR institutes."
+                                },
+                                {
+                                    "id": 87,
+                                    "name": "National Agricultural Science Fund (NASF)",
+                                    "type": "Research",
+                                    "description": "Funds innovative agricultural research.",
+                                    "detailed_description": "Supports high-risk, high-reward agricultural research projects.",
+                                    "application_process": "Scientists can apply through ICAR."
+                                },
+                                {
+                                    "id": 88,
+                                    "name": "Agri-Clinics and Agri-Business Centres (ACABC)",
+                                    "type": "Entrepreneurship",
+                                    "description": "Supports agri-entrepreneurs.",
+                                    "detailed_description": "Supports agricultural graduates to set up agri-ventures with 36% subsidy.",
+                                    "application_process": "Apply through NABARD or MANAGE."
+                                },
+                                {
+                                    "id": 89,
+                                    "name": "National Gender Resource Centre in Agriculture (NGRCA)",
+                                    "type": "Gender Mainstreaming",
+                                    "description": "Addresses gender concerns in agriculture.",
+                                    "detailed_description": "Addresses gender concerns in agriculture through policy support and capacity building.",
+                                    "application_process": "Implemented through State Agriculture Departments."
+                                },
+                                {
+                                    "id": 90,
+                                    "name": "National Project on Biogas Development",
+                                    "type": "Renewable Energy",
+                                    "description": "Promotes biogas plants.",
+                                    "detailed_description": "Promotes family-type biogas plants for rural households with cattle.",
+                                    "application_process": "Apply through State Nodal Departments."
+                                },
+                                {
+                                    "id": 91,
+                                    "name": "National Project on Organic Farming (NPOF)",
+                                    "type": "Organic Farming",
+                                    "description": "Promotes organic inputs.",
+                                    "detailed_description": "Promotes organic inputs like biofertilizers and vermiculture.",
+                                    "application_process": "Implemented through State Agriculture Departments."
+                                },
+                                {
+                                    "id": 92,
+                                    "name": "National Project on Management of Soil Health and Fertility (NPMSHF)",
+                                    "type": "Soil Health",
+                                    "description": "Soil health management.",
+                                    "detailed_description": "Promotes soil test based balanced fertilizer use.",
+                                    "application_process": "Farmers can get soil tested at designated labs."
+                                },
+                                {
+                                    "id": 93,
+                                    "name": "National Watershed Development Project for Rainfed Areas (NWDPRA)",
+                                    "type": "Watershed",
+                                    "description": "Watershed development.",
+                                    "detailed_description": "Develops watersheds for sustainable production in rainfed areas.",
+                                    "application_process": "Implemented through State Agriculture Departments."
+                                },
+                                {
+                                    "id": 94,
+                                    "name": "Rainfed Area Development Programme (RADP)",
+                                    "type": "Rainfed Farming",
+                                    "description": "Rainfed farming development.",
+                                    "detailed_description": "Promotes integrated farming systems in rainfed areas.",
+                                    "application_process": "Implemented through State Agriculture Departments."
+                                },
+                            ]
+                        };
+
+                        // Function to get appropriate icon for each scheme
+                        function getSchemeIcon(schemeName) {
+                            const icons = {
+                                "Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)": "fa-rupee-sign",
+                                "Pradhan Mantri Fasal Bima Yojana (PMFBY)": "fa-umbrella",
+                                "Kisan Credit Card (KCC)": "fa-credit-card",
+                                "Paramparagat Krishi Vikas Yojana (PKVY)": "fa-leaf",
+                                "Soil Health Card Scheme": "fa-vial",
+                                "Micro Irrigation Fund (MIF)": "fa-tint",
+                                "Mission for Integrated Development of Horticulture (MIDH)": "fa-apple-alt",
+                                "National Food Security Mission (NFSM)": "fa-bread-slice",
+                                "Rashtriya Krishi Vikas Yojana (RKVY)": "fa-project-diagram",
+                                "National Mission on Oilseeds and Oil Palm (NMOOP)": "fa-oil-can",
+                                "Sub-Mission on Agricultural Mechanization (SMAM)": "fa-tractor",
+                                "National Mission on Agricultural Extension and Technology (NMAET)": "fa-chalkboard-teacher",
+                                "Pradhan Mantri Krishi Sinchai Yojana (PMKSY)": "fa-tint",
+                                "National Livestock Mission (NLM)": "fa-paw",
+                                "Dairy Entrepreneurship Development Scheme (DEDS)": "fa-cheese",
+                                "National Beekeeping & Honey Mission (NBHM)": "fa-book",
+                                "Pradhan Mantri Matsya Sampada Yojana (PMMSY)": "fa-fish",
+                                "Agriculture Infrastructure Fund (AIF)": "fa-warehouse",
+                                "National Bamboo Mission (NBM)": "fa-bamboo",
+                                "Sub-Mission on Agroforestry (SMAF)": "fa-tree",
+                                "Mission Organic Value Chain Development for North Eastern Region (MOVCDNER)": "fa-mountain",
+                                "National Project on Organic Farming (NPOF)": "fa-leaf",
+                                "Gramin Bhandaran Yojana": "fa-warehouse",
+                                "National Mission on Sustainable Habitat (NMSH)": "fa-recycle",
+                                "National Biogas and Manure Management Programme (NBMMP)": "fa-recycle",
+                                "Pradhan Mantri Kisan Urja Suraksha evam Utthaan Mahabhiyan (PM-KUSUM)": "fa-solar-panel",
+                                "Rainfed Area Development Programme (RADP)": "fa-cloud-rain",
+                                "National Watershed Development Project for Rainfed Areas (NWDPRA)": "fa-water",
+                                "National Project on Soil Health and Fertility": "fa-vial",
+                                "National Mission for Sustainable Agriculture (NMSA)": "fa-recycle",
+                                "National Mission on Medicinal Plants": "fa-leaf",
+                                "National Saffron Mission": "fa-spa",
+                                "Coconut Development Board Schemes": "fa-tree",
+                                "National Programme for Organic Production (NPOP)": "fa-leaf",
+                                "Integrated Scheme on Agricultural Cooperation (ISAC)": "fa-handshake",
+                                "Integrated Scheme on Agricultural Marketing (ISAM)": "fa-store",
+                                "Market Intervention Scheme and Price Support Scheme (MIS-PSS)": "fa-shopping-basket",
+                                "Price Stabilization Fund (PSF)": "fa-balance-scale",
+                                "National Agricultural Market (e-NAM)": "fa-desktop",
+                                "Kisan Rath Mobile App": "fa-truck",
+                                "Pradhan Mantri Annadata Aay Sanrakshan Abhiyan (PM-AASHA)": "fa-shopping-basket",
+                                "National Programme for Cold Chain Development": "fa-snowflake",
+                                "Operation Greens": "fa-apple-alt",
+                                "Formation and Promotion of Farmer Producer Organizations (FPOs)": "fa-users",
+                                "Agricultural Marketing Infrastructure (AMI)": "fa-store",
+                                "National Mission on Seed Spices": "fa-seedling",
+                                "National Mission on Natural Farming": "fa-leaf",
+                                "Central Sector Scheme on Blue Revolution": "fa-fish",
+                                "National Scheme on Welfare of Fishermen": "fa-anchor",
+                                "National Programme for Bovine Breeding and Dairy Development (NPBBDD)": "fa-cow",
+                                "Livestock Health and Disease Control (LH&DC) Scheme": "fa-syringe",
+                                "National Animal Disease Control Programme (NADCP)": "fa-shield-virus",
+                                "Rashtriya Gokul Mission": "fa-cow",
+                                "National Programme for Dairy Development (NPDD)": "fa-cheese",
+                                "Dairy Processing and Infrastructure Development Fund (DIDF)": "fa-industry",
+                                "Silk Samagra Yojana": "fa-vest",
+                                "National Mission on Edible Oils - Oil Palm (NMEO-OP)": "fa-oil-can",
+                                "Sub-Mission on Plant Protection and Plant Quarantine": "fa-bug",
+                                "Sub-Mission on Seeds and Planting Material (SMSP)": "fa-seedling",
+                                "National Project on Agroforestry (NPAF)": "fa-tree",
+                                "National Project on Management of Soil Health and Fertility (NPMSHF)": "fa-vial",
+                                "National Food Security Mission-Commercial Crops (NFSM-CC)": "fa-money-bill-wave",
+                                "Per Drop More Crop (PDMC)": "fa-tint",
+                                "Integrated Scheme on Agricultural Census, Economics and Statistics": "fa-chart-bar",
+                                "National e-Governance Plan in Agriculture (NeGPA)": "fa-laptop-code",
+                                "Kisan Call Centers (KCC)": "fa-phone-alt",
+                                "Agricultural Technology Management Agency (ATMA)": "fa-chalkboard-teacher",
+                                "National Agricultural Higher Education Project (NAHEP)": "fa-graduation-cap",
+                                "National Agricultural Innovation Project (NAIP)": "fa-flask",
+                                "National Initiative on Climate Resilient Agriculture (NICRA)": "fa-cloud-sun",
+                                "Krishi Vigyan Kendra (KVK)": "fa-microscope",
+                                "Farmer FIRST": "fa-lightbulb",
+                                "Student READY": "fa-user-graduate",
+                                "Network Project on Agricultural Bioinformatics and Computational Biology": "fa-dna",
+                                "National Agricultural Science Fund (NASF)": "fa-flask",
+                                "Agri-Clinics and Agri-Business Centres (ACABC)": "fa-briefcase-medical",
+                                "National Gender Resource Centre in Agriculture (NGRCA)": "fa-venus-mars",
+                                "National Project on Biogas Development": "fa-fire",
+                                "Crop Residue Management": "fa-fire-alt",
+                                "Digital Agriculture Initiatives": "fa-laptop-code",
+                                "Sub-Mission on Agricultural Extension (SMAE)": "fa-chalkboard-teacher"
+                            };
+
+                            for (const key in icons) {
+                                if (schemeName.includes(key)) {
+                                    return icons[key];
+                                }
+                            }
+                            return "fa-hand-holding-usd"; // default icon
+                        }
+
+                        // Function to get appropriate background color based on scheme type
+                        // Function to get appropriate background color based on scheme type
+                        function getSchemeBgColor(type) {
+                            switch (type) {
+                                // Government Schemes
+                                case "Central Sector": return "bg-blue-100";
+                                case "Centrally Sponsored": return "bg-purple-100";
+                                case "State Scheme": return "bg-indigo-100";
+
+                                // Agricultural Development
+                                case "Krishonnati Yojana": return "bg-green-100";
+                                case "PM-KISAN": return "bg-green-50";
+                                case "Soil Health Card": return "bg-amber-100";
+                                case "Digital Agriculture Initiatives": return "bg-green-100"
+                                case "Farmer FIRST": return "bg-green-100"
+
+                                // Financial Support
+                                case "Credit Scheme": return "bg-blue-50";
+                                case "Subsidy Scheme": return "bg-blue-200";
+                                case "Loan Waiver": return "bg-blue-300";
+
+                                // Insurance
+                                case "Crop Insurance": return "bg-orange-100";
+                                case "Livestock Insurance": return "bg-orange-50";
+
+                                // Special Focus Schemes
+                                case "Organic Farming": return "bg-teal-100";
+                                case "Natural Farming": return "bg-emerald-100";
+                                case "Micro Irrigation": return "bg-cyan-100";
+
+                                default: return "bg-orange-100";
+                            }
+                        }
+
+                        // Function to get appropriate text color based on scheme type
+                        function getSchemeTextColor(type) {
+                            switch (type) {
+                                // Government Schemes
+                                case "Central Sector": return "text-blue-800";
+                                case "Centrally Sponsored": return "text-purple-800";
+                                case "State Scheme": return "text-indigo-800";
+
+                                // Agricultural Development
+                                case "Krishonnati Yojana": return "text-green-800";
+                                case "PM-KISAN": return "text-green-700";
+                                case "Soil Health Card": return "text-amber-800";
+
+                                // Financial Support
+                                case "Credit Scheme": return "text-blue-700";
+                                case "Subsidy Scheme": return "text-blue-900";
+                                case "Loan Waiver": return "text-blue-950";
+
+                                // Insurance
+                                case "Crop Insurance": return "text-orange-800";
+                                case "Livestock Insurance": return "text-orange-700";
+
+                                // Special Focus Schemes
+                                case "Organic Farming": return "text-teal-800";
+                                case "Natural Farming": return "text-emerald-800";
+                                case "Micro Irrigation": return "text-cyan-800";
+
+                                default: return "text-gray-800";
+                            }
+                        }
+
+                        // Function to get appropriate badge class based on scheme type
+                        function getSchemeBadgeClass(type) {
+                            switch (type) {
+                                // Government Schemes
+                                case "Central Sector": return "border border-blue-200 bg-blue-50 text-blue-800";
+                                case "Centrally Sponsored": return "border border-purple-200 bg-purple-50 text-purple-800";
+                                case "State Scheme": return "border border-indigo-200 bg-indigo-50 text-indigo-800";
+
+                                // Agricultural Development
+                                case "Krishonnati Yojana": return "border border-green-200 bg-green-50 text-green-800";
+                                case "PM-KISAN": return "border border-green-100 bg-green-25 text-green-700";
+                                case "Soil Health Card": return "border border-amber-200 bg-amber-50 text-amber-800";
+
+                                // Financial Support
+                                case "Credit Scheme": return "border border-blue-100 bg-blue-25 text-blue-700";
+                                case "Subsidy Scheme": return "border border-blue-300 bg-blue-100 text-blue-900";
+                                case "Loan Waiver": return "border border-blue-400 bg-blue-200 text-blue-950";
+
+                                // Insurance
+                                case "Crop Insurance": return "border border-orange-200 bg-orange-50 text-orange-800";
+                                case "Livestock Insurance": return "border border-orange-100 bg-orange-25 text-orange-700";
+
+                                // Special Focus Schemes
+                                case "Organic Farming": return "border border-teal-200 bg-teal-50 text-teal-800";
+                                case "Natural Farming": return "border border-emerald-200 bg-emerald-50 text-emerald-800";
+                                case "Micro Irrigation": return "border border-cyan-200 bg-cyan-50 text-cyan-800";
+
+                                default: return "border border-gray-200 bg-gray-50 text-gray-800";
+                            }
+                        }
+
+                        // Function to generate random deadline date
+                        function getRandomDeadline() {
+                            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                            const month = months[Math.floor(Math.random() * months.length)];
+                            const day = Math.floor(Math.random() * 28) + 1;
+                            const year = 2025 + Math.floor(Math.random() * 2);
+                            return `${day} ${month} ${year}`;
+                        }
+
+                        // Function to render subsidy cards// 🔍 Live search filter
+                        document.getElementById('searchBox').addEventListener('input', function (e) {
+                            const keyword = e.target.value.toLowerCase();
+
+                            const filtered = subsidyData.subsidy_schemes.filter(scheme => {
+                                return (
+                                    scheme.name.toLowerCase().includes(keyword) ||
+                                    (scheme.description && scheme.description.toLowerCase().includes(keyword)) ||
+                                    (scheme.detailed_description && scheme.detailed_description.toLowerCase().includes(keyword))
+                                );
+                            });
+
+                            renderSubsidyCards(filtered);
+                        });
+
+                        function renderSubsidyCards(subsidies) {
+                            const container = document.getElementById('subsidyResults');
+                            container.innerHTML = '';
+
+                            subsidies.forEach(subsidy => {
+                                const icon = getSchemeIcon(subsidy.name);
+                                const bgColor = getSchemeBgColor(subsidy.type);
+                                const textColor = getSchemeTextColor(subsidy.type);
+                                const badgeClass = getSchemeBadgeClass(subsidy.type);
+                                const deadline = getRandomDeadline();
+
+                                const card = document.createElement('div');
+                                card.className = 'bg-white rounded-xl overflow-hidden shadow-md subsidy-card transition duration-300 relative';
+                                card.innerHTML = `
+                    <div class="h-48 ${bgColor} flex items-center justify-center p-6 relative">
+                        <i class="fas ${icon} ${textColor} text-6xl"></i>
+                        <span class="scheme-type-badge ${badgeClass}">${subsidy.type}</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">${subsidy.name}</h3>
+                        <p class="text-gray-500 mb-4">${subsidy.description}</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-sm text-gray-500">Deadline</p>
+                                <p class="font-medium text-gray-800">${deadline}</p>
+                            </div>
+                            <button class="text-green-500 hover:text-green-600 font-medium flex items-center view-details" data-id="${subsidy.id}">
+                                Details <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                                container.appendChild(card);
+                            });
+
+                            // Add event listeners to detail buttons
+                            document.querySelectorAll('.view-details').forEach(button => {
+                                button.addEventListener('click', function () {
+                                    const id = parseInt(this.getAttribute('data-id'));
+                                    showSchemeDetails(id);
+                                });
+                            });
+                        }
+
+                        // Function to show scheme details in modal
+                        function showSchemeDetails(id) {
+                            const scheme = subsidyData.subsidy_schemes.find(s => s.id === id);
+                            if (!scheme) return;
+
+                            // Create modal HTML
+                            const modal = document.createElement('div');
+                            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4';
+                            modal.innerHTML = `
+                <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold text-gray-800">${scheme.name}</h3>
+                            <button class="text-gray-500 hover:text-gray-700 close-modal">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="mb-6">
+                            <span class="inline-block px-3 py-1 rounded-full text-sm font-medium ${getSchemeBadgeClass(scheme.type)} text-white">
+                                ${scheme.type}
+                            </span>
+                        </div>
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-2">Description</h4>
+                            <p class="text-gray-600">${scheme.detailed_description || scheme.description}</p>
+                        </div>
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-2">Application Process</h4>
+                            <p class="text-gray-600">${scheme.application_process || 'Please contact your local agriculture office for application details.'}</p>
+                        </div>
+                        <div class="flex justify-end">
+    <a href="https://pmkisan.gov.in/" target="_blank" rel="noopener noreferrer"
+       class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-md font-medium transition duration-300 inline-flex items-center">
+        <i class="fas fa-external-link-alt mr-2"></i> Official Website
+    </a>
+</div>
+
+                    </div>
+                </div>
+            `;
+
+                            // Add to DOM
+                            document.body.appendChild(modal);
+                            document.body.style.overflow = 'hidden';
+
+                            // Add close event
+                            modal.querySelector('.close-modal').addEventListener('click', () => {
+                                document.body.removeChild(modal);
+                                document.body.style.overflow = '';
+                            });
+                        }
+
+                        // Initial render of subsidy cards
+                        renderSubsidyCards(subsidyData.subsidy_schemes);
+
+                        // Form submission handler
+                        document.getElementById('subsidyForm').addEventListener('submit', function (e) {
+                            e.preventDefault();
+
+                            const state = document.getElementById('state').value;
+                            const crop = document.getElementById('crop').value;
+                            const land = document.getElementById('land').value;
+
+                            // Simple filtering logic (in a real app, this would be more sophisticated)
+                            let filteredSchemes = subsidyData.subsidy_schemes;
+
+                            if (crop) {
+                                filteredSchemes = filteredSchemes.filter(scheme => {
+                                    // Some simple matching logic
+                                    if (crop === 'rice' || crop === 'wheat') {
+                                        return scheme.name.includes('Food Security') ||
+                                            scheme.name.includes('Fasal Bima') ||
+                                            scheme.name.includes('KISAN');
+                                    } else if (crop === 'vegetables' || crop === 'fruits') {
+                                        return scheme.name.includes('Horticulture') ||
+                                            scheme.name.includes('Organic');
+                                    }
+                                    return true;
+                                });
+                            }
+
+                            renderSubsidyCards(filteredSchemes);
+
+                            // Scroll to results
+                            document.getElementById('subsidyResults').scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        });
+
+                        // FAQ toggle functionality
+                        document.querySelectorAll('.border-b button, .border-gray-200 button').forEach(button => {
+                            button.addEventListener('click', () => {
+                                const content = button.nextElementSibling;
+                                const icon = button.querySelector('i');
+
+                                content.classList.toggle('hidden');
+                                icon.classList.toggle('fa-chevron-down');
+                                icon.classList.toggle('fa-chevron-up');
+                            });
+                        });
+
+                        // Load more button functionality
+                        document.querySelector('.bg-gray-50 button').addEventListener('click', function () {
+                            // In a real app, this would load more results
+                            alert('Loading more subsidies... (this is a demo)');
+                        });
+                    </script>
+                    <script>
+                        const itemsPerPage = 12;
+                        let currentPage = 1;
+                        let currentData = [...subsidyData.subsidy_schemes];
+
+                        function renderPage() {
+                            const start = (currentPage - 1) * itemsPerPage;
+                            const end = start + itemsPerPage;
+                            const visibleItems = currentData.slice(start, end);
+                            const container = document.getElementById("subsidyResults");
+                            container.innerHTML = "";
+
+                            visibleItems.forEach(sub => {
+                                container.innerHTML += `
+        <div class="bg-white p-4 rounded shadow-md">
+            <h3 class="text-xl font-bold">${sub.name}</h3>
+            <p class="text-gray-700">${sub.description || sub.detailed_description}</p>
+            <p class="text-sm text-green-600 mt-2">${sub.type}</p>
+        </div>`;
+                            });
+
+                            updatePagination();
+                        }
+
+                        function updatePagination() {
+                            const pageCount = Math.ceil(currentData.length / itemsPerPage);
+                            const pageWrapper = document.getElementById("pageNumbers");
+                            pageWrapper.innerHTML = "";
+
+                            for (let i = 1; i <= pageCount; i++) {
+                                pageWrapper.innerHTML += `<button onclick="goToPage(${i})" class="px-3 py-1 border rounded ${i === currentPage ? 'bg-green-500 text-white' : 'bg-gray-200'}">${i}</button>`;
+                            }
+
+                            document.getElementById("prevPage").disabled = currentPage === 1;
+                            document.getElementById("nextPage").disabled = currentPage === pageCount;
+                        }
+
+                        function goToPage(pageNum) {
+                            currentPage = pageNum;
+                            renderPage();
+                        }
+
+                        function sortSubsidies() {
+                            const sortKey = document.getElementById("sortSelect").value;
+                            currentData.sort((a, b) => {
+                                let valA = (a[sortKey] || "").toLowerCase();
+                                let valB = (b[sortKey] || "").toLowerCase();
+                                return valA.localeCompare(valB);
+                            });
+                            currentPage = 1;
+                            renderPage();
+                        }
+
+                        document.getElementById("prevPage").addEventListener("click", () => {
+                            if (currentPage > 1) {
+                                currentPage--;
+                                renderPage();
+                            }
+                        });
+                        document.getElementById("nextPage").addEventListener("click", () => {
+                            if (currentPage < Math.ceil(currentData.length / itemsPerPage)) {
+                                currentPage++;
+                                renderPage();
+                            }
+                        });
+
+                        document.addEventListener("DOMContentLoaded", renderPage);
+                    </script><button id="backToTop"
+                        style="display:none;position:fixed;bottom:30px;right:30px;z-index:999;background:green;color:white;border:none;padding:10px 15px;border-radius:8px;cursor:pointer;">↑
+                        Top</button>
+                    <script>
+                        const backToTop = document.getElementById("backToTop");
+                        window.onscroll = () => {
+                            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                                backToTop.style.display = "block";
+                            } else {
+                                backToTop.style.display = "none";
+                            }
+                        };
+                        backToTop.onclick = () => {
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        };
+                    </script>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", () => {
+                            const elements = document.querySelectorAll(".fade-in");
+                            const observer = new IntersectionObserver((entries) => {
+                                entries.forEach(entry => {
+                                    if (entry.isIntersecting) {
+                                        entry.target.classList.add("visible");
+                                    }
+                                });
+                            }, { threshold: 0.1 });
+                            elements.forEach(el => observer.observe(el));
+                        });
+                    </script>
+        </body>
+
+</html>
